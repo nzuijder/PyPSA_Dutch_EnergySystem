@@ -91,7 +91,7 @@ def get_cap_constraints(t, years, cn):
 # MAIN MODEL FUNCTION
 # ============================================================
 
-def model_run(db_dir, years, t_res, passenger_cars_cf, rt, rs, gas_multiplier = 1, electrolysis_multiplier = 1, carbon_price = None):
+def model_run(db_dir, years, t_res, passenger_cars_cf, rt, rs, heatpump_CAPEX_multiplier = 1, heatpump_efficiency_multiplier = 1, carbon_price = None):
     """
     Build and solve the energy model.
 

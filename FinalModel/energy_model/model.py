@@ -152,22 +152,22 @@ def model_run(
     # All multipliers equal 1 in 2020 and reach their endpoint in 2050.
 
     scenario_settings = {
-        "default_low": {
+        "default_tech_low_carbon": {
             "capex_2050": 1.0,
             "efficiency_2050": 1.0,
             "carbon_2050": 1.0,
         },
-        "default_high": {
+        "default_tech_high_carbon": {
             "capex_2050": 1.0,
             "efficiency_2050": 1.0,
             "carbon_2050": 8.0,
         },
-        "changed_low": {
+        "improved_tech_low_carbon": {
             "capex_2050": 1.2,
             "efficiency_2050": 0.9,
             "carbon_2050": 1.0,
         },
-        "changed_high": {
+        "improved_tech_high_carbon": {
             "capex_2050": 1.2,
             "efficiency_2050": 0.9,
             "carbon_2050": 8.0,

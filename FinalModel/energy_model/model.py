@@ -91,7 +91,15 @@ def get_cap_constraints(t, years, cn):
 # MAIN MODEL FUNCTION
 # ============================================================
 
-def model_run(db_dir, years, t_res, passenger_cars_cf, rt, rs, heatpump_CAPEX_multiplier = 1, heatpump_efficiency_multiplier = 1, carbon_price = None):
+def model_run(
+    db_dir,
+    years,
+    t_res,
+    passenger_cars_cf,
+    rt,
+    rs,
+    scenario="default_low",
+):
     """
     Build and solve the energy model.
 
@@ -137,24 +145,90 @@ def model_run(db_dir, years, t_res, passenger_cars_cf, rt, rs, heatpump_CAPEX_mu
     #   OPTION FOR SCENARIO TESTING 
     # -----------------------------
 
-    # The original group model had a line of code that multiplies the CAPEX of electrolysis by a factor. 
-    # This was used to test the effect of different electrolysis costs on the model results. I have used
-    # this line as an example for how to implement scenario testing of large-scale heat pump costs and efficiency.
-    # The original line of code is commented out below, and the new line of code is active. 
-    #if ("Electrolysis", "CAPEX") in techs_d.index:
-        #techs_d.loc[("Electrolysis", "CAPEX"), years] *= electrolysis_multiplier
+    # -----------------------------
+    # SCENARIO TESTING
+    # -----------------------------
+    # Multipliers are relative to the default parameter in each model year.
+    # All multipliers equal 1 in 2020 and reach their endpoint in 2050.
 
-    if ("Large-scale heat pump", "CAPEX") in techs_d.index:
-        techs_d.loc[("Large-scale heat pump", "CAPEX"), years] *= heatpump_CAPEX_multiplier
-    
-    if ("Large-scale heat pump", "Efficiency") in techs_d.index:
-        techs_d.loc[("Large-scale heat pump", "Efficiency"), years] *= heatpump_efficiency_multiplier
+    scenario_settings = {
+        "default_low": {
+            "capex_2050": 1.0,
+            "efficiency_2050": 1.0,
+            "carbon_2050": 1.0,
+        },
+        "default_high": {
+            "capex_2050": 1.0,
+            "efficiency_2050": 1.0,
+            "carbon_2050": 8.0,
+        },
+        "changed_low": {
+            "capex_2050": 1.2,
+            "efficiency_2050": 0.9,
+            "carbon_2050": 1.0,
+        },
+        "changed_high": {
+            "capex_2050": 1.2,
+            "efficiency_2050": 0.9,
+            "carbon_2050": 8.0,
+        },
+    }
 
-    # The below code came from the group model assignment and applies to the individual assignment
-    # as well since I am testing the effect of various carbon prices on the model results.
-    if carbon_price is not None:
-        resources_pars.loc[(resources_pars.Resource == 'CO2 atmosphere') &
-                       (resources_pars.Parameter == 'Price'), years] = carbon_price
+    if scenario not in scenario_settings:
+        raise ValueError(
+            f"Unknown scenario {scenario!r}. "
+            f"Choose from {list(scenario_settings)}."
+        )
+
+    settings = scenario_settings[scenario]
+
+    def multiplier_path(endpoint):
+        """Linear change from 1 in 2020 to endpoint in 2050.
+
+        Before 2020, use 1; after 2050, retain the 2050 multiplier.
+        """
+        return pd.Series(
+            np.interp(
+                np.asarray(years, dtype=float),
+                [2020, 2050],
+                [1.0, endpoint],
+            ),
+            index=years,
+        )
+
+    technology = "Large-scale heat pump"
+
+    # Apply CAPEX and efficiency multipliers.
+    for parameter, endpoint in [
+        ("CAPEX", settings["capex_2050"]),
+        ("Efficiency", settings["efficiency_2050"]),
+    ]:
+        row = (technology, parameter)
+
+        if row not in techs_d.index:
+            raise KeyError(f"Missing technology parameter: {row}")
+
+        techs_d.loc[row, years] = (
+            techs_d.loc[row, years].astype(float)
+            * multiplier_path(endpoint)
+        )
+
+    # Apply carbon-price multipliers.
+    carbon_mask = (
+        resources_pars["Resource"].eq("CO2 atmosphere")
+        & resources_pars["Parameter"].eq("Price")
+    )
+
+    if not carbon_mask.any():
+        raise ValueError(
+            "No price row found for 'CO2 atmosphere' in resources_pars."
+        )
+
+    resources_pars.loc[carbon_mask, years] = (
+        resources_pars.loc[carbon_mask, years]
+        .astype(float)
+        .mul(multiplier_path(settings["carbon_2050"]), axis="columns")
+    )
 
     # --------------------------
     # 2. CREATE PYPSA NETWORK

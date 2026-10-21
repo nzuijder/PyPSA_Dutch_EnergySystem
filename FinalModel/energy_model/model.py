@@ -134,14 +134,24 @@ def model_run(db_dir, years, t_res, passenger_cars_cf, rt, rs, gas_multiplier = 
         )
 
     # -----------------------------
-    #   OPTION FOR SCENARIO TESTING (added by Sabine just trying something)
+    #   OPTION FOR SCENARIO TESTING 
     # -----------------------------
-    resources_pars.loc[(resources_pars.Resource == 'Gas supply') &
-                       (resources_pars.Parameter == 'Price'), years] *= gas_multiplier
 
-    if ("Electrolysis", "CAPEX") in techs_d.index:
-        techs_d.loc[("Electrolysis", "CAPEX"), years] *= electrolysis_multiplier
+    # The original group model had a line of code that multiplies the CAPEX of electrolysis by a factor. 
+    # This was used to test the effect of different electrolysis costs on the model results. I have used
+    # this line as an example for how to implement scenario testing of large-scale heat pump costs and efficiency.
+    # The original line of code is commented out below, and the new line of code is active. 
+    #if ("Electrolysis", "CAPEX") in techs_d.index:
+        #techs_d.loc[("Electrolysis", "CAPEX"), years] *= electrolysis_multiplier
+
+    if ("Large-scale heat pump", "CAPEX") in techs_d.index:
+        techs_d.loc[("Large-scale heat pump", "CAPEX"), years] *= heatpump_CAPEX_multiplier
     
+    if ("Large-scale heat pump", "Efficiency") in techs_d.index:
+        techs_d.loc[("Large-scale heat pump", "Efficiency"), years] *= heatpump_efficiency_multiplier
+
+    # The below code came from the group model assignment and applies to the individual assignment
+    # as well since I am testing the effect of various carbon prices on the model results.
     if carbon_price is not None:
         resources_pars.loc[(resources_pars.Resource == 'CO2 atmosphere') &
                        (resources_pars.Parameter == 'Price'), years] = carbon_price

@@ -163,13 +163,13 @@ def model_run(
             "carbon_2050": 8.0,
         },
         "improved_tech_low_carbon": {
-            "capex_2050": 1.2,
-            "efficiency_2050": 0.9,
+            "capex_2050": 0.8,
+            "efficiency_2050": 1.1,
             "carbon_2050": 1.0,
         },
         "improved_tech_high_carbon": {
-            "capex_2050": 1.2,
-            "efficiency_2050": 0.9,
+            "capex_2050": 0.8,
+            "efficiency_2050": 1.1,
             "carbon_2050": 8.0,
         },
     }

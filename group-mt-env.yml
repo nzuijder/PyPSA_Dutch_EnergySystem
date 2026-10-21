@@ -1,0 +1,36 @@
+name: group-mt-env
+
+channels:
+  - conda-forge
+  - gurobi
+
+dependencies:
+  - python=3.14
+  - pypsa=1.2.0
+  - gurobi=13.0.2
+  - highspy=1.14.0
+
+  # Jupyter / VS Code
+  - ipykernel
+  - nbformat
+
+  # Data analysis
+  - numpy
+  - scipy
+  - pandas
+  - openpyxl
+
+  # Plotting
+  - matplotlib
+  - seaborn
+  - plotly
+
+  # Geospatial analysis
+  - geopandas
+  - folium
+
+  # Additional analysis packages
+  - networkx
+  - scikit-learn
+  - statsmodels
+  - eurostat

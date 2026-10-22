@@ -142,10 +142,6 @@ def model_run(
         )
 
     # -----------------------------
-    #   OPTION FOR SCENARIO TESTING 
-    # -----------------------------
-
-    # -----------------------------
     # SCENARIO TESTING
     # -----------------------------
     # Multipliers are relative to the default parameter in each model year.
@@ -160,7 +156,7 @@ def model_run(
         "default_tech_high_carbon": {
             "capex_2050": 1.0,
             "efficiency_2050": 1.0,
-            "carbon_2050": 8.0,
+            "carbon_2050": 12.0,
         },
         "improved_tech_low_carbon": {
             "capex_2050": 0.8,
@@ -170,7 +166,7 @@ def model_run(
         "improved_tech_high_carbon": {
             "capex_2050": 0.8,
             "efficiency_2050": 1.1,
-            "carbon_2050": 8.0,
+            "carbon_2050": 12.0,
         },
     }
 
@@ -183,9 +179,7 @@ def model_run(
     settings = scenario_settings[scenario]
 
     def multiplier_path(endpoint):
-        """Linear change from 1 in 2020 to endpoint in 2050.
-
-        Before 2020, use 1; after 2050, retain the 2050 multiplier.
+        """Linear change for multipliers from 1 in 2020 to endpoint in 2050.
         """
         return pd.Series(
             np.interp(

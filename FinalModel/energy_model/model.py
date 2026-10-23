@@ -98,7 +98,7 @@ def model_run(
     passenger_cars_cf,
     rt,
     rs,
-    scenario="default_low",
+    scenario_settings,
 ):
     """
     Build and solve the energy model.
@@ -144,39 +144,18 @@ def model_run(
     # -----------------------------
     # SCENARIO TESTING
     # -----------------------------
-    # Multipliers are relative to the default parameter in each model year.
-    # All multipliers equal 1 in 2020 and reach their endpoint in 2050.
+    # All multipliers equal 1 in 2020 and reach their endpoint in 2050
+    # as specific in the interface notebook under "setting scenario parameters".
 
-    scenario_settings = {
-        "default_tech_low_carbon": {
-            "capex_2050": 1.0,
-            "efficiency_2050": 1.0,
-            "carbon_2050": 1.0,
-        },
-        "default_tech_high_carbon": {
-            "capex_2050": 1.0,
-            "efficiency_2050": 1.0,
-            "carbon_2050": 12.0,
-        },
-        "improved_tech_low_carbon": {
-            "capex_2050": 0.8,
-            "efficiency_2050": 1.1,
-            "carbon_2050": 1.0,
-        },
-        "improved_tech_high_carbon": {
-            "capex_2050": 0.8,
-            "efficiency_2050": 1.1,
-            "carbon_2050": 12.0,
-        },
-    }
-
-    if scenario not in scenario_settings:
+    required_keys = {"capex_2050", "efficiency_2050", "carbon_2050"}
+    missing = required_keys - set(scenario_settings)
+    if missing:
         raise ValueError(
-            f"Unknown scenario {scenario!r}. "
-            f"Choose from {list(scenario_settings)}."
+            f"scenario_settings is missing keys: {sorted(missing)}. "
+            f"Required keys: {sorted(required_keys)}."
         )
 
-    settings = scenario_settings[scenario]
+    settings = scenario_settings
 
     def multiplier_path(endpoint):
         """Linear change for multipliers from 1 in 2020 to endpoint in 2050.

@@ -18,14 +18,14 @@ Everything is in `FinalModel/`:
 
 - `interface.ipynb` runs the scenarios and saves them to `results/` as `.nc` files
 - `visualisations.ipynb` makes data visualizations
-- `analysis.ipynb` makes the summary table (`presentation_metrics_summary.csv`)
 
 The model code is in `energy_model/` and the input data (demand, supply, technologies) is in `input_databases/`.
 
 ## Scenarios
 
-- Gas price ×1, 3, 5.5, 8 combined with electrolyser CAPEX ×1, 0.75, 0.5, 0.25
-- Carbon prices from €0 to €300/t
-- A baseline without hydrogen
+- A baseline without applied multipliers
+- Large-scale heat pump CAPEX ×1, 0.93, 0.87, 0.80 combined with efficiency ×1, 1.04, 1.08, 1.12
+- Carbon price x1, 4, 8, 12
+- Large-scale heat pump CAPEX ×1, 0.93, 0.87, 0.80 combined with efficiency ×1, 1.04, 1.08, 1.12 AND Carbon price x1, 4, 8, 12
 
 `OLD/` has earlier versions of the model.

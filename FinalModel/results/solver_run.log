@@ -21082,3 +21082,277 @@ Iteration    Objective       Primal Inf.    Dual Inf.      Time
 
 Solved in 205915 iterations and 138.19 seconds (115.21 work units)
 Optimal objective  2.343094753e+12
+
+Gurobi 13.0.2 (mac64[arm]) logging started Sat Oct 24 14:30:53 2026
+
+Set parameter LogFile to value "results//solver_run.log"
+Set parameter LogToConsole to value 0
+Set parameter TimeLimit to value 43200
+Set parameter LogToConsole to value 0
+Gurobi Optimizer version 13.0.2 build v13.0.2rc1 (mac64[arm] - Darwin 25.6.0 25G83)
+
+CPU model: Apple M2
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  43200
+LogToConsole  0
+
+Optimize a model with 720020 rows, 334391 columns and 1694694 nonzeros (Min)
+Model fingerprint: 0xf011c29d
+Model has 194162 linear objective coefficients
+Coefficient statistics:
+  Matrix range     [1e-04, 7e+00]
+  Objective range  [2e+03, 8e+07]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+00, 1e+20]
+Warning: Model contains large rhs
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+
+Presolve removed 437898 rows and 70757 columns
+Presolve time: 0.95s
+Presolved: 282122 rows, 263634 columns, 1144534 nonzeros
+
+Concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Ordering time: 0.18s
+
+Barrier statistics:
+ Dense cols : 88
+ AA' NZ     : 1.009e+06
+ Factor NZ  : 3.450e+06 (roughly 250 MB of memory)
+ Factor Ops : 8.853e+07 (less than 1 second per iteration)
+ Threads    : 6
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   9.04551955e+19 -1.42219989e+19  6.25e+18 8.84e-10  9.21e+16     2s
+   1   9.03483152e+19 -3.44457691e+27  6.25e+18 1.04e+07  2.12e+17     2s
+   2   9.00333329e+19 -1.19188388e+29  6.25e+18 9.90e+06  3.54e+18     2s
+   3   9.04714372e+19 -3.75875701e+29  6.25e+18 1.00e+07  1.13e+19     2s
+   4   9.07762019e+19 -2.85559510e+31  6.25e+18 9.82e+06  8.91e+20     2s
+   5   9.16514294e+19 -1.72868637e+33  6.25e+18 9.18e+06  5.72e+22     2s
+   6   9.27398629e+19 -7.07103788e+34  6.25e+18 9.36e+06  2.48e+24     3s
+
+Barrier performed 6 iterations in 2.80 seconds (2.28 work units)
+Numerical trouble encountered
+
+Model may be infeasible or unbounded.  Consider using the
+homogeneous algorithm (through parameter 'BarHomogeneous')
+
+Waiting for other threads to finish...          64s
+Waiting for other threads to finish...         127s
+
+Solved with dual simplex
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  227557    2.1928091e+12   0.000000e+00   0.000000e+00    139s
+
+Solved in 227557 iterations and 139.33 seconds (122.01 work units)
+Optimal objective  2.192809143e+12
+
+Gurobi 13.0.2 (mac64[arm]) logging started Sat Oct 24 14:33:24 2026
+
+Set parameter LogFile to value "results//solver_run.log"
+Set parameter LogToConsole to value 0
+Set parameter TimeLimit to value 43200
+Set parameter LogToConsole to value 0
+Gurobi Optimizer version 13.0.2 build v13.0.2rc1 (mac64[arm] - Darwin 25.6.0 25G83)
+
+CPU model: Apple M2
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  43200
+LogToConsole  0
+
+Optimize a model with 720020 rows, 334391 columns and 1694694 nonzeros (Min)
+Model fingerprint: 0xaadf41fb
+Model has 194162 linear objective coefficients
+Coefficient statistics:
+  Matrix range     [1e-04, 7e+00]
+  Objective range  [2e+03, 8e+07]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+00, 1e+20]
+Warning: Model contains large rhs
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+
+Presolve removed 437898 rows and 70757 columns
+Presolve time: 0.89s
+Presolved: 282122 rows, 263634 columns, 1144534 nonzeros
+
+Concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Ordering time: 0.16s
+
+Barrier statistics:
+ Dense cols : 88
+ AA' NZ     : 1.009e+06
+ Factor NZ  : 3.450e+06 (roughly 250 MB of memory)
+ Factor Ops : 8.853e+07 (less than 1 second per iteration)
+ Threads    : 6
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   9.29672057e+19 -1.42275327e+19  6.25e+18 8.84e-10  9.22e+16     1s
+   1   9.28821297e+19 -3.44587588e+27  6.25e+18 1.04e+07  2.12e+17     2s
+   2   9.25764349e+19 -1.19235778e+29  6.25e+18 9.90e+06  3.54e+18     2s
+   3   9.30526945e+19 -3.76035449e+29  6.25e+18 1.00e+07  1.13e+19     2s
+   4   9.33919520e+19 -2.85696201e+31  6.25e+18 9.82e+06  8.92e+20     2s
+   5   9.42894843e+19 -1.72955774e+33  6.25e+18 9.19e+06  5.73e+22     2s
+   6   9.53926440e+19 -7.07456510e+34  6.25e+18 9.36e+06  2.48e+24     2s
+
+Barrier performed 6 iterations in 2.27 seconds (2.28 work units)
+Numerical trouble encountered
+
+Model may be infeasible or unbounded.  Consider using the
+homogeneous algorithm (through parameter 'BarHomogeneous')
+
+Waiting for other threads to finish...          64s
+
+Solved with dual simplex
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  198617    2.3419502e+12   0.000000e+00   0.000000e+00    106s
+
+Solved in 198617 iterations and 106.20 seconds (101.85 work units)
+Optimal objective  2.341950242e+12
+
+Gurobi 13.0.2 (mac64[arm]) logging started Sat Oct 24 14:35:23 2026
+
+Set parameter LogFile to value "results//solver_run.log"
+Set parameter LogToConsole to value 0
+Set parameter TimeLimit to value 43200
+Set parameter LogToConsole to value 0
+Gurobi Optimizer version 13.0.2 build v13.0.2rc1 (mac64[arm] - Darwin 25.6.0 25G83)
+
+CPU model: Apple M2
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  43200
+LogToConsole  0
+
+Optimize a model with 720020 rows, 334391 columns and 1694694 nonzeros (Min)
+Model fingerprint: 0x822c0fa3
+Model has 194162 linear objective coefficients
+Coefficient statistics:
+  Matrix range     [1e-04, 7e+00]
+  Objective range  [2e+03, 8e+07]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+00, 1e+20]
+Warning: Model contains large rhs
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+
+Presolve removed 437898 rows and 70757 columns
+Presolve time: 0.89s
+Presolved: 282122 rows, 263634 columns, 1144534 nonzeros
+
+Concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Ordering time: 0.16s
+
+Barrier statistics:
+ Dense cols : 88
+ AA' NZ     : 1.009e+06
+ Factor NZ  : 3.450e+06 (roughly 250 MB of memory)
+ Factor Ops : 8.853e+07 (less than 1 second per iteration)
+ Threads    : 6
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   9.04503487e+19 -1.42219810e+19  6.25e+18 8.84e-10  9.21e+16     1s
+   1   9.03432891e+19 -3.44242440e+27  6.25e+18 1.01e+07  2.12e+17     2s
+   2   9.00241181e+19 -1.19338104e+29  6.25e+18 9.44e+06  3.54e+18     2s
+   3   9.04153816e+19 -3.76992425e+29  6.25e+18 9.62e+06  1.13e+19     2s
+   4   9.06608122e+19 -2.92705435e+31  6.25e+18 9.39e+06  9.13e+20     2s
+   5   9.15638183e+19 -1.87506335e+33  6.25e+18 8.54e+06  6.24e+22     2s
+   6   9.27819774e+19 -7.98223959e+34  6.25e+18 9.34e+06  2.82e+24     2s
+
+Barrier performed 6 iterations in 2.21 seconds (2.28 work units)
+Numerical trouble encountered
+
+Model may be infeasible or unbounded.  Consider using the
+homogeneous algorithm (through parameter 'BarHomogeneous')
+
+Waiting for other threads to finish...          63s
+
+Solved with dual simplex
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  234055    2.1919209e+12   0.000000e+00   0.000000e+00    101s
+
+Solved in 234055 iterations and 101.22 seconds (99.72 work units)
+Optimal objective  2.191920892e+12
+
+Gurobi 13.0.2 (mac64[arm]) logging started Sat Oct 24 14:37:17 2026
+
+Set parameter LogFile to value "results//solver_run.log"
+Set parameter LogToConsole to value 0
+Set parameter TimeLimit to value 43200
+Set parameter LogToConsole to value 0
+Gurobi Optimizer version 13.0.2 build v13.0.2rc1 (mac64[arm] - Darwin 25.6.0 25G83)
+
+CPU model: Apple M2
+Thread count: 8 physical cores, 8 logical processors, using up to 8 threads
+
+Non-default parameters:
+TimeLimit  43200
+LogToConsole  0
+
+Optimize a model with 720020 rows, 334391 columns and 1694694 nonzeros (Min)
+Model fingerprint: 0x782801dc
+Model has 194162 linear objective coefficients
+Coefficient statistics:
+  Matrix range     [1e-04, 7e+00]
+  Objective range  [2e+03, 8e+07]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+00, 1e+20]
+Warning: Model contains large rhs
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+
+Presolve removed 437898 rows and 70757 columns
+Presolve time: 0.87s
+Presolved: 282122 rows, 263634 columns, 1144534 nonzeros
+
+Concurrent LP optimizer: primal simplex, dual simplex, and barrier
+Showing barrier log only...
+
+Ordering time: 0.16s
+
+Barrier statistics:
+ Dense cols : 88
+ AA' NZ     : 1.009e+06
+ Factor NZ  : 3.450e+06 (roughly 250 MB of memory)
+ Factor Ops : 8.853e+07 (less than 1 second per iteration)
+ Threads    : 6
+
+                  Objective                Residual
+Iter       Primal          Dual         Primal    Dual     Compl     Time
+   0   9.29623589e+19 -1.42275147e+19  6.25e+18 8.84e-10  9.22e+16     1s
+   1   9.28771264e+19 -3.44372201e+27  6.25e+18 1.01e+07  2.12e+17     2s
+   2   9.25664666e+19 -1.19385526e+29  6.25e+18 9.44e+06  3.54e+18     2s
+   3   9.29959936e+19 -3.77152490e+29  6.25e+18 9.63e+06  1.13e+19     2s
+   4   9.32761025e+19 -2.92846575e+31  6.25e+18 9.40e+06  9.14e+20     2s
+   5   9.42038577e+19 -1.87602050e+33  6.25e+18 8.54e+06  6.25e+22     2s
+   6   9.54374761e+19 -7.98626779e+34  6.25e+18 9.34e+06  2.82e+24     2s
+
+Barrier performed 6 iterations in 2.20 seconds (2.28 work units)
+Numerical trouble encountered
+
+Model may be infeasible or unbounded.  Consider using the
+homogeneous algorithm (through parameter 'BarHomogeneous')
+
+Waiting for other threads to finish...          64s
+Waiting for other threads to finish...         124s
+
+Solved with dual simplex
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+  201358    2.3405099e+12   0.000000e+00   0.000000e+00    130s
+
+Solved in 201358 iterations and 130.14 seconds (129.59 work units)
+Optimal objective  2.340509912e+12
